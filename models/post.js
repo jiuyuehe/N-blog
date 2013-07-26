@@ -112,9 +112,11 @@ Post.getOne = function(name, day, title, callback) {//获取一篇文章
         //解析 markdown 为 html
         if(doc){
           doc.post = markdown.toHTML(doc.post);
+          if(doc.comments!=undefined){
           doc.comments.forEach(function(comment){
             comment.content = markdown.toHTML(comment.content);
           });
+          }
         }
         callback(null, doc);//返回特定查询的文章
       });
