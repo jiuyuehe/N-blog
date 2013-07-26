@@ -119,7 +119,7 @@ Post.getOne = function(name, day, title, callback) {//获取一篇文章
         callback(null, doc);//返回特定查询的文章
       });
       //每访问1次，pv 值增加1
-      collection.update({"name":name,"time.day":day,"title":title},{$inc:{"pv":1}});
+      collection.update({"name":name,"time.day":day,"title":title},{$inc:{"pv":1}},function(err){});
     });
   });
 };
